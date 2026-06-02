@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Result App</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Student Result App</h1>
+
+<form method="POST">
+
+<input type="text"
+       name="name"
+       placeholder="Student Name"
+       required>
+
+<input type="number"
+       name="english"
+       placeholder="English"
+       required>
+
+<input type="number"
+       name="tamil"
+       placeholder="Tamil"
+       required>
+
+<input type="number"
+       name="maths"
+       placeholder="Maths"
+       required>
+
+<input type="number"
+       name="science"
+       placeholder="Science"
+       required>
+
+<input type="number"
+       name="social"
+       placeholder="Social"
+       required>
+
+<button type="submit">
+Calculate Result
+</button>
+
+</form>
+
+{% if result %}
+
+<div class="result">
+
+<h2>{{ result.name }}</h2>
+
+<p>Total Marks : {{ result.total }}</p>
+
+<p>Maximum Mark : {{ result.max }}</p>
+
+<p>Minimum Mark : {{ result.min }}</p>
+
+{% if result.failed %}
+
+<p>
+Failed Subject(s):
+{{ result.failed | join(', ') }}
+</p>
+
+{% endif %}
+
+<p>Grade : {{ result.grade }}</p>
+
+<p>Result : {{ result.status }}</p>
+
+</div>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>
